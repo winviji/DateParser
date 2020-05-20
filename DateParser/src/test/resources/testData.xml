@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestSuite>
+
+	<Test name="testYearFormat4Digit">
+		<TestCase>
+			<input>1969</input>
+			<output>Wed Jan 01 1969 00:00:00 GMT+0000</output>
+			<error></error>
+		</TestCase>
+		<TestCase>
+			<input>2093</input>
+			<output>Thu Jan 01 2093 00:00:00 GMT+0000</output>
+			<error></error>
+
+		</TestCase>
+
+		<TestCase>
+			<input>20930</input>
+			<output>Thu Jan 01 2093 00:00:00 GMT+0000</output>
+			<error>Trailing characters/digits not removed after year value
+			</error>
+		</TestCase>
+
+		<TestCase>
+			<input>20930a</input>
+			<output>Thu Jan 01 2093 00:00:00 GMT+0000</output>
+			<error>Trailing characters/digits not removed after year value
+			</error>
+
+		</TestCase>
+
+		<TestCase>
+			<input>a20930</input>
+			<output>Thu Jan 01 2093 00:00:00 GMT+0000</output>
+			<error>characters/digits not removed before year value</error>
+
+		</TestCase>
+	</Test>
+
+	<Test name="TestYearFormat3Digit">
+
+		<TestCase>
+			<input>078</input>
+			<output>Sat Jan 01 2078 00:00:00 GMT+0000</output>
+			<error> Year value does not match </error>
+		</TestCase>
+
+		<TestCase>
+			<input>001</input>
+			<output>Mon Jan 01 2001 00:00:00 GMT+0000</output>
+			<error> Year value does not match </error>
+
+		</TestCase>
+
+		<TestCase>
+			<input>009</input>
+			<output>Thu Jan 01 2009 00:00:00 GMT+0000</output>
+			<error> Year value does not match </error>
+
+		</TestCase>
+
+		<TestCase>
+			<input>013</input>
+			<output>Tue Jan 01 2013 00:00:00 GMT+0000</output>
+			<error> Year value does not match </error>
+
+		</TestCase>
+
+
+	</Test>
+	<Test name="Test2DigitNumber">
+
+		<TestCase>
+			<input>#02</input>
+			<output>Thu Feb 01 2001 00:00:00 GMT+0000</output>
+			<error></error>
+
+		</TestCase>
+
+		<TestCase>
+			<input>@12</input>
+			<output>Sat Dec 01 2001 00:00:00 GMT+0000</output>
+			<error></error>
+
+		</TestCase>
+
+		<TestCase>
+			<input>#13</input>
+			<output>Tue Jan 01 2013 00:00:00 GMT+0000</output>
+			<error></error>
+
+		</TestCase>
+
+		<TestCase>
+			<input>32</input>
+			<output>Thu Jan 01 2032 00:00:00 GMT+0000</output>
+			<error></error>
+
+		</TestCase>
+		<TestCase>
+			<input>50</input>
+			<output>Sat Jan 01 2050 00:00:00 GMT+0000</output>
+			<error></error>
+
+		</TestCase>
+
+	</Test>
+
+	<Test name="TestMonthandYear">
+		<TestCase>
+			<input>12 1990</input>
+			<output>Sat Dec 01 1990 00:00:00 GMT+0000</output>
+			<error></error>
+
+		</TestCase>
+		<TestCase>
+			<input>Dec 1990</input>
+			<output>Sat Dec 01 1990 00:00:00 GMT+0000</output>
+			<error></error>
+
+		</TestCase>
+		<TestCase>
+			<input>1990 12</input>
+			<output>Sat Dec 01 1990 00:00:00 GMT+0000</output>
+			<error></error>
+
+		</TestCase>
+		<TestCase>
+			<input>Sept 45</input>
+			<output>Fri Sep 01 2045 00:00:00 GMT+0000</output>
+			<error></error>
+
+		</TestCase>
+
+		<TestCase>
+			<input>45 Sep</input>
+			<output>Fri Sep 01 2045 00:00:00 GMT+0000</output>
+			<error></error>
+
+		</TestCase>
+
+
+	</Test>
+
+	<Test name="TestMonthAndDate">
+		<TestCase>
+			<input>31 April</input>
+			<output>Tue May 01 2001 00:00:00 GMT+0000</output>
+			<error></error>
+
+		</TestCase>
+		<TestCase>
+			<input>April 31</input>
+			<output>Tue May 01 2001 00:00:00 GMT+0000</output>
+			<error></error>
+
+		</TestCase>
+		<TestCase>
+			<input>31 04</input>
+			<output>Tue May 01 2001 00:00:00 GMT+0000</output>
+			<error></error>
+
+		</TestCase>
+		<TestCase>
+			<input>04 31</input>
+			<output>Tue May 01 2001 00:00:00 GMT+0000</output>
+			<error></error>
+
+		</TestCase>
+		<TestCase>
+			<input>22 sept</input>
+			<output>Sat Sep 22 2001 00:00:00 GMT+0000</output>
+			<error></error>
+
+		</TestCase>
+		<TestCase>
+			<input>sept 22</input>
+			<output>Sat Sep 22 2001 00:00:00 GMT+0000</output>
+			<error></error>
+
+		</TestCase>
+
+		<TestCase>
+			<input>29 Feb</input>
+			<output>Thu Mar 01 2001 00:00:00 GMT+0000</output>
+			<error></error>
+
+		</TestCase>
+
+		<TestCase>
+			<input>Feb 29</input>
+			<output>Thu Mar 01 2001 00:00:00 GMT+0000</output>
+			<error></error>
+
+		</TestCase>
+
+		<TestCase>
+			<input>29 02</input>
+			<output>Thu Mar 01 2001 00:00:00 GMT+0000</output>
+			<error></error>
+
+		</TestCase>
+
+		<TestCase>
+			<input>13 6</input>
+			<output>Wed Jun 13 2001 00:00:00 GMT+0000</output>
+			<error>Error in parsing if the first digit is greater than 12.
+				Interpreted as month instead of day value </error>
+
+		</TestCase>
+
+
+	</Test>
+
+	<Test name="TestMonthDateYear">
+
+		<TestCase>
+			<input>31/12/99</input>
+			<output>Fri Dec 31 1999 00:00:00 GMT+0000</output>
+			<error></error>
+
+		</TestCase>
+
+		<TestCase>
+			<input>12/31/99</input>
+			<output>Fri Dec 31 1999 00:00:00 GMT+0000</output>
+			<error></error>
+
+		</TestCase>
+
+		<TestCase>
+			<input>99/12/31</input>
+			<output>Fri Dec 31 1999 00:00:00 GMT+0000</output>
+			<error></error>
+
+		</TestCase>
+		<TestCase>
+			<input>1999/31/12</input>
+			<output>Fri Dec 31 1999 00:00:00 GMT+0000</output>
+			<error></error>
+		</TestCase>
+		<TestCase>
+			<input>1999 dec 12</input>
+			<output>Fri Dec 31 1999 00:00:00 GMT+0000</output>
+			<error></error>
+		</TestCase>
+		<TestCase>
+			<input>30-Apr-78</input>
+			<output>Sun Apr 30 1978 00:00:00 GMT+0000</output>
+			<error></error>
+		</TestCase>
+		<TestCase>
+			<input>13-03-2020</input>
+			<output>Fri Mar 13 2020 00:00:00 GMT+0000</output>
+			<error></error>
+		</TestCase>
+	</Test>
+
+	<Test name='SeparatorsTest'>
+		<TestCase>
+			<input>*49*01*01</input>
+			<output>Fri Jan 01 2049 00:00:00 GMT+0000</output>
+			<error>Separator * is not parsed correctly</error>
+		</TestCase>
+		<TestCase>
+			<input>^49^01^01</input>
+			<output>Fri Jan 01 2049 00:00:00 GMT+0000</output>
+			<error> Separator ^ is not parsed correctly</error>
+		</TestCase>
+
+		<TestCase>
+			<input>*078&amp;01 22</input>
+			<output>Sun Jan 22 1978 00:00:00 GMT+0000</output>
+			<error>Mix of separators *, *amp; and spaces not parsed correctly
+			</error>
+		</TestCase>
+		<TestCase>
+			<input>*022&amp;01 22</input>
+			<output>Sat Jan 22 2022 00:00:00 GMT+0000</output>
+			<error>Mix of separators *, *amp; and spaces not parsed correctly
+			</error>
+		</TestCase>
+		<TestCase>
+			<input>*078&amp;01(22</input>
+			<output>Sun Jan 22 1978 00:00:00 GMT+0000</output>
+			<error>Mix of separators *, *amp; and ( not parsed correctly
+			</error>
+		</TestCase>
+
+		<TestCase>
+			<input>14:12:2015</input>
+			<output>Mon Dec 14 2015 00:00:00 GMT+0000</output>
+			<error>Colon : used as separator for date is not parsed
+				correctly
+			</error>
+		</TestCase>
+
+
+
+	</Test>
+
+	<Test name="TestTimeandTimeZone">
+
+		<TestCase>
+			<input>10:01 10/01/2014</input>
+			<output>Wed Oct 01 2014 10:01:00 GMT+0000</output>
+			<error>Time vaues do not match expected</error>
+		</TestCase>
+
+		<TestCase>
+			<input>10/01 10/01/2014</input>
+			<output>Wed Oct 01 2014 10:01:00 GMT+0000</output>
+			<error>Time String does not accept slash '/' as separator</error>
+		</TestCase>
+
+		<TestCase>
+			<input>14:12: 201 5</input>
+			<output>Fri Jan 05 2001 14:12:20 GMT+0000</output>
+			<error>Here time and year are entered .
+				hh:14, mm:12, ss:20. The space between min and seconds should be ignored.
+				No separators between second and date values date should be Jan 05,
+				2001.
+			</error>
+		</TestCase>
+
+		<TestCase>
+			<input>01/09/2014 GMT +0730</input>
+			<output>Wed Jan 08 2014 16:30:00 GMT+0000</output>
+			<error>Error in timezone conversion
+			</error>
+		</TestCase>
+
+
+		<TestCase>
+			<input>01/09/2014 GMT +8989</input>
+			<output>Invalid</output>
+			<error>Timezone should be allowed in the range -12 to +14
+			</error>
+		</TestCase>
+
+
+		<TestCase>
+			<input>23:59:59 2012</input>
+			<output>Sun Jan 01 2012 23:59:59 GMT+0000</output>
+			<error>
+			</error>
+		</TestCase>
+
+		<TestCase>
+			<input>31/mar/09 03:45 pm</input>
+			<output>Tue Mar 31 2009 15:45:00 GMT+0000</output>
+			<error> AM / PM Conversion incorrect
+			</error>
+		</TestCase>
+
+		<TestCase>
+			<input>12/05/2003 utc+0530 </input>
+			<output>Thu Dec 04 2003 18:30:00 GMT+0000</output>
+			<error> Timezone Conversion incorrect
+			</error>
+		</TestCase>
+
+		<TestCase>
+			<input>gmt+0530 12/05/2003</input>
+			<output>Thu Dec 04 2003 18:30:00 GMT+0000</output>
+			<error> Date parsing when Timezone entered before date is incorrect
+			</error>
+		</TestCase>
+
+	</Test>
+
+
+</TestSuite>
