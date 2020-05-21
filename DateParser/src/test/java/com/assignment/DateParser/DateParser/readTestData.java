@@ -45,6 +45,7 @@ public class readTestData {
 
   }
 
+  // Read browser configuration data
   protected ArrayList<String> getTestBrowserName() {
     String browserName = "";
     String browserVersion = "";
