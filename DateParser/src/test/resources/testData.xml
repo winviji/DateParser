@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Test Data to be used for testing DateParser -->
 <TestSuite>
+	<Browser>
+		<!-- Set value to name of browser to be used for testing. Currently supports 
+			Firefox and Chrome. For chrome browser, set the version that matches the 
+			current version of chrome installed in your machine -->
 
+		<!-- <value>Firefox</value> -->
+		<value>Chrome</value>
+		<version></version>
+	</Browser>
+
+	<Test name="UITest">
+		<title>Propine Date Parser</title>
+		<descriptionLabel>Enter a text in any format, press submit to
+			interpret it as a date.
+		</descriptionLabel>
+
+
+	</Test>
 	<Test name="testYearFormat4Digit">
 		<TestCase>
 			<input>1969</input>
@@ -11,7 +29,6 @@
 			<input>2093</input>
 			<output>Thu Jan 01 2093 00:00:00 GMT+0000</output>
 			<error></error>
-
 		</TestCase>
 
 		<TestCase>
@@ -33,6 +50,13 @@
 			<input>a20930</input>
 			<output>Thu Jan 01 2093 00:00:00 GMT+0000</output>
 			<error>characters/digits not removed before year value</error>
+
+		</TestCase>
+
+		<TestCase>
+			<input>yyyy</input>
+			<output>Invalid</output>
+			<error>Invalid input should be ignored</error>
 
 		</TestCase>
 	</Test>
@@ -66,6 +90,13 @@
 
 		</TestCase>
 
+		<TestCase>
+			<input>$#Q</input>
+			<output>Invalid</output>
+			<error>Invalid input should be ignored</error>
+
+		</TestCase>
+
 
 	</Test>
 	<Test name="Test2DigitNumber">
@@ -87,7 +118,7 @@
 		<TestCase>
 			<input>#13</input>
 			<output>Tue Jan 01 2013 00:00:00 GMT+0000</output>
-			<error></error>
+			<error>Number 13 is not interpreted as year 2013</error>
 
 		</TestCase>
 
@@ -100,6 +131,13 @@
 		<TestCase>
 			<input>50</input>
 			<output>Sat Jan 01 2050 00:00:00 GMT+0000</output>
+			<error></error>
+
+		</TestCase>
+
+		<TestCase>
+			<input>aa</input>
+			<output>Invalid</output>
 			<error></error>
 
 		</TestCase>
@@ -126,7 +164,7 @@
 
 		</TestCase>
 		<TestCase>
-			<input>Sept 45</input>
+			<input>September 45</input>
 			<output>Fri Sep 01 2045 00:00:00 GMT+0000</output>
 			<error></error>
 
@@ -138,15 +176,26 @@
 			<error></error>
 
 		</TestCase>
+		<TestCase>
+			<input>00 00</input>
+			<output>Invalid</output>
+			<error>00 00 should be ignored</error>
 
+		</TestCase>
 
+		<TestCase>
+			<input>Sep first</input>
+			<output>Invalid</output>
+			<error>invalid string "sep" should be ignored</error>
+
+		</TestCase>
 	</Test>
 
 	<Test name="TestMonthAndDate">
 		<TestCase>
 			<input>31 April</input>
 			<output>Tue May 01 2001 00:00:00 GMT+0000</output>
-			<error></error>
+			<error> 31 April is invalid date, should point to 1st may</error>
 
 		</TestCase>
 		<TestCase>
@@ -205,10 +254,17 @@
 			<input>13 6</input>
 			<output>Wed Jun 13 2001 00:00:00 GMT+0000</output>
 			<error>Error in parsing if the first digit is greater than 12.
-				Interpreted as month instead of day value </error>
+				Interpreted as month instead of day value
+			</error>
 
 		</TestCase>
 
+		<TestCase>
+			<input>29 02</input>
+			<output>Thu Mar 01 2001 00:00:00 GMT+0000</output>
+			<error></error>
+
+		</TestCase>
 
 	</Test>
 
@@ -253,6 +309,17 @@
 			<input>13-03-2020</input>
 			<output>Fri Mar 13 2020 00:00:00 GMT+0000</output>
 			<error></error>
+		</TestCase>
+		<TestCase>
+			<input>Jan 00 2020</input>
+			<output>Invalid</output>
+			<error>Invalid date entered</error>
+		</TestCase>
+
+		<TestCase>
+			<input>0 se 1956</input>
+			<output>Invalid</output>
+			<error>Invalid date and month entered</error>
 		</TestCase>
 	</Test>
 
@@ -317,8 +384,10 @@
 			<input>14:12: 201 5</input>
 			<output>Fri Jan 05 2001 14:12:20 GMT+0000</output>
 			<error>Here time and year are entered .
-				hh:14, mm:12, ss:20. The space between min and seconds should be ignored.
-				No separators between second and date values date should be Jan 05,
+				hh:14, mm:12, ss:20. The space
+				between min and seconds should be ignored.
+				No separators between
+				second and date values date should be Jan 05,
 				2001.
 			</error>
 		</TestCase>

@@ -44,6 +44,31 @@ public class readTestData {
 
   }
 
+  protected ArrayList<String> getTestBrowserName() {
+    String browserName = "";
+    String browserVersion = "";
+
+    ArrayList<String> browserDetails = new ArrayList<String>();
+    NodeList browserList = testXml.getElementsByTagName("Browser");
+
+    Node node = browserList.item(0);
+    Element element = (Element) node;
+
+    browserName = element.getElementsByTagName("value").item(0).getTextContent().toLowerCase();
+    browserVersion = element.getElementsByTagName("version").item(0).getTextContent().toLowerCase();
+    if (browserName.isEmpty())
+      browserName = "Chrome";
+
+    if (browserVersion.isEmpty())
+      browserVersion = "72.0.3626.69";
+
+    browserDetails.add(browserName);
+    browserDetails.add(browserVersion);
+
+    return browserDetails;
+
+  }
+
   public List<ArrayList<String>> readTest(String name) {
 
     // NodeList test = testXml.getElementsByTagName("Test");

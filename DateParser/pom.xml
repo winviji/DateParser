@@ -42,11 +42,11 @@
 		 <dependency> <groupId>io.github.bonigarcia</groupId> <artifactId>webdrivermanager</artifactId> 
 			<version>4.0.0</version> </dependency> 
 		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver -->
-		 <dependency>
+		 <!-- <dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-chrome-driver</artifactId>
 			<version>4.0.0-alpha-5</version>
-		</dependency> 
+		</dependency>  -->
 
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
