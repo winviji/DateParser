@@ -34,9 +34,15 @@ Running the tests at the local machine:
 
 Local environment needs maven to run the code
 
+Steps to create the project :
+Clone the repository to your local machine
+From your Java IDE,Select create a new maven project using existing pom.xml file 
+Select the pom.xml downloaded from the remote repository
+
 
 All requied libraries will be downloaded by maven
 
+Run the mvn test command to run the test from commandline
 TEST report:
 
-The test report is available in //DateParser/surefire-reports
+The test report is available in //DateParser/target/surefire-reports/index.html

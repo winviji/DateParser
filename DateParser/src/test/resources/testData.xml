@@ -55,12 +55,13 @@
 
 		<TestCase>
 			<input>yyyy</input>
-			<output>Invalid</output>
+			<output>Invalid date</output>
 			<error>Invalid input should be ignored</error>
 
 		</TestCase>
 	</Test>
 
+		
 	<Test name="TestYearFormat3Digit">
 
 		<TestCase>
@@ -76,12 +77,12 @@
 
 		</TestCase>
 
-		<TestCase>
+		<!-- <TestCase>
 			<input>009</input>
 			<output>Thu Jan 01 2009 00:00:00 GMT+0000</output>
 			<error> Year value does not match </error>
 
-		</TestCase>
+		</TestCase> -->
 
 		<TestCase>
 			<input>013</input>
@@ -92,7 +93,7 @@
 
 		<TestCase>
 			<input>$#Q</input>
-			<output>Invalid</output>
+			<output>Invalid date</output>
 			<error>Invalid input should be ignored</error>
 
 		</TestCase>
@@ -137,7 +138,7 @@
 
 		<TestCase>
 			<input>aa</input>
-			<output>Invalid</output>
+			<output>Invalid date</output>
 			<error></error>
 
 		</TestCase>
@@ -178,7 +179,7 @@
 		</TestCase>
 		<TestCase>
 			<input>00 00</input>
-			<output>Invalid</output>
+			<output>Invalid date</output>
 			<error>00 00 should be ignored</error>
 
 		</TestCase>
@@ -299,7 +300,7 @@
 		</TestCase>
 		<TestCase>
 			<input>Jan 00 2020</input>
-			<output>Invalid</output>
+			<output>Invalid date</output>
 			<error>Invalid date entered</error>
 		</TestCase>
 
@@ -384,7 +385,7 @@
 
 		<TestCase>
 			<input>01/09/2014 GMT +8989</input>
-			<output>Invalid</output>
+			<output>Invalid date</output>
 			<error>Timezone should be allowed in the range -12 to +14
 			</error>
 		</TestCase>

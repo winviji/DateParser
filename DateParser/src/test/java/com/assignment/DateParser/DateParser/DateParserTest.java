@@ -5,6 +5,8 @@ package com.assignment.DateParser.DateParser;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -52,9 +54,8 @@ public class DateParserTest {
     } else if (browserName.equalsIgnoreCase("firefox")) {
       driver = new FirefoxDriver();
     }
-
+    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
-
 
   @BeforeTest()
   public void checks() {
@@ -71,6 +72,8 @@ public class DateParserTest {
       } else if (browserName.equalsIgnoreCase("firefox")) {
         driver = new FirefoxDriver();
       }
+      driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
     }
     if (!driver.getCurrentUrl().contains(testURL)) {
       driver.get(testURL);
@@ -78,6 +81,9 @@ public class DateParserTest {
   }
 
 
+  /*
+   * Test the Labels, description text , page title in the UI
+   */
 
   @Test(priority = 0)
   public void TestUILabels() {
@@ -98,7 +104,7 @@ public class DateParserTest {
    */
 
   @Test(priority = 1)
-  public void testYearFormat4Digit() {
+  public void testYearFormat4Digit() throws InterruptedException {
 
     runTestByName("testYearFormat4Digit");
 
@@ -111,7 +117,7 @@ public class DateParserTest {
    * month = Jan
    */
   @Test(priority = 2)
-  public void testYearFormat3Digit() {
+  public void testYearFormat3Digit() throws InterruptedException {
 
     runTestByName("TestYearFormat3Digit");
   }
@@ -122,7 +128,7 @@ public class DateParserTest {
    */
 
   @Test(priority = 3)
-  public void TestYearFormat2Digit() {
+  public void TestYearFormat2Digit() throws InterruptedException {
 
     runTestByName("Test2DigitNumber");
   }
@@ -133,7 +139,7 @@ public class DateParserTest {
    * month names should be ignored
    */
   @Test(priority = 4)
-  public void TestMonthandYear() {
+  public void TestMonthandYear() throws InterruptedException {
 
     runTestByName("TestMonthandYear");
   }
@@ -144,7 +150,7 @@ public class DateParserTest {
    */
 
   @Test(priority = 5)
-  public void TestMonthAndDate() {
+  public void TestMonthAndDate() throws InterruptedException {
 
     runTestByName("TestMonthAndDate");
   }
@@ -155,7 +161,7 @@ public class DateParserTest {
    * Test for all possible formats
    */
   @Test(priority = 6)
-  public void TestMonthDateYear() {
+  public void TestMonthDateYear() throws InterruptedException {
 
     runTestByName("TestMonthDateYear");
   }
@@ -166,7 +172,7 @@ public class DateParserTest {
    * that Date-time string can be entered in any format
    */
   @Test(priority = 7)
-  public void TestAllowedSeparators() {
+  public void TestAllowedSeparators() throws InterruptedException {
     runTestByName("SeparatorsTest");
 
   }
@@ -175,16 +181,17 @@ public class DateParserTest {
    * Input date-time string along with timezone conversion and AM/PM values
    */
   @Test(priority = 8)
-  public void TestTimeZone() {
+  public void TestTimeZone() throws InterruptedException {
     runTestByName("TestTimeandTimeZone");
   }
 
+
   /*
-   * Test the Labels, description text , page title in the UI
+   * Method to run the tests by reading the input data and verify result against expected output
+   * Takes testname as parameter
    */
 
-
-  protected void runTestByName(String name) {
+  protected void runTestByName(String name) throws InterruptedException {
 
 
 
@@ -201,8 +208,10 @@ public class DateParserTest {
 
     dt.waitForPageToLoad(driver);
     for (int i = 0; i < itr; i++) {
-      dt.inputDate(driver, inputs.get(i));
+      driver.findElement(By.name("date")).sendKeys(inputs.get(i));
       dt.clickSubmitButton(driver);
+      Thread.sleep(2000);
+      dt.waitForPageToLoad(driver);
 
       String date = dt.readOutput(driver);
 

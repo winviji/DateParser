@@ -61,6 +61,9 @@ public class DateTimeUtility {
    * Wait for the page to load , timeout in 60 seconds
    */
   protected void waitForPageToLoad(WebDriver driver) {
+
+
+
     new WebDriverWait(driver, 60).until(ExpectedConditions.presenceOfElementLocated((By
         .name("date"))));
 

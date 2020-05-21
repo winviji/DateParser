@@ -21,6 +21,7 @@ public class readTestData {
 
   protected Document testXml;
 
+
   public readTestData() {
     file = new File("src/test/resources/testData.xml");
 
@@ -69,6 +70,9 @@ public class readTestData {
 
   }
 
+  /*
+   * Method to read test data from the given xml file Return the test data as List
+   */
   public List<ArrayList<String>> readTest(String name) {
 
     // NodeList test = testXml.getElementsByTagName("Test");
@@ -77,13 +81,16 @@ public class readTestData {
     ArrayList<String> outputValues = new ArrayList<String>();;
     ArrayList<String> errorValues = new ArrayList<String>();;
 
+    // Read the elements with tag name :Test
     NodeList test = testXml.getElementsByTagName("Test");
     boolean flag = false;
+    // Iterate through all the test nodelist till the test with given name is found
     for (int itr = 0; itr < test.getLength() && flag == false; itr++) {
 
       Node node = test.item(itr);
 
-      // System.out.println("\nNode Name :" + node.getNodeName());
+      // Find the test elements that match the given test name
+      // Read the input, output and error values from the matching element
       if (node.getAttributes().getNamedItem("name") != null) {
         if (node.getAttributes().getNamedItem("name").getNodeValue().equals(name)) {
           flag = true;
