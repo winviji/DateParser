@@ -183,12 +183,6 @@
 
 		</TestCase>
 
-		<TestCase>
-			<input>Sep first</input>
-			<output>Invalid</output>
-			<error>invalid string "sep" should be ignored</error>
-
-		</TestCase>
 	</Test>
 
 	<Test name="TestMonthAndDate">
@@ -244,16 +238,9 @@
 		</TestCase>
 
 		<TestCase>
-			<input>29 02</input>
-			<output>Thu Mar 01 2001 00:00:00 GMT+0000</output>
-			<error></error>
-
-		</TestCase>
-
-		<TestCase>
 			<input>13 6</input>
 			<output>Wed Jun 13 2001 00:00:00 GMT+0000</output>
-			<error>Error in parsing if the first digit is greater than 12.
+			<error>Error in parsing if the first value is greater than 12.
 				Interpreted as month instead of day value
 			</error>
 
@@ -262,7 +249,7 @@
 		<TestCase>
 			<input>29 02</input>
 			<output>Thu Mar 01 2001 00:00:00 GMT+0000</output>
-			<error></error>
+			<error>Error in parsing if the date equals 29 feb for non-leap year</error>
 
 		</TestCase>
 
@@ -316,11 +303,6 @@
 			<error>Invalid date entered</error>
 		</TestCase>
 
-		<TestCase>
-			<input>0 se 1956</input>
-			<output>Invalid</output>
-			<error>Invalid date and month entered</error>
-		</TestCase>
 	</Test>
 
 	<Test name='SeparatorsTest'>
@@ -337,23 +319,23 @@
 
 		<TestCase>
 			<input>*078&amp;01 22</input>
-			<output>Sun Jan 22 1978 00:00:00 GMT+0000</output>
-			<error>Mix of separators *, *amp; and spaces not parsed correctly
+			<output>Sat Jan 01 2078 00:00:00 GMT+0000</output>
+			<error>Mix of separators *, &amp; and spaces not parsed correctly
 			</error>
 		</TestCase>
 		<TestCase>
 			<input>*022&amp;01 22</input>
 			<output>Sat Jan 22 2022 00:00:00 GMT+0000</output>
-			<error>Mix of separators *, *amp; and spaces not parsed correctly
+			<error>Mix of separators *, &amp; and spaces not parsed correctly
 			</error>
 		</TestCase>
 		<TestCase>
 			<input>*078&amp;01(22</input>
-			<output>Sun Jan 22 1978 00:00:00 GMT+0000</output>
+			<output>Sat Jan 22 2078 00:00:00 GMT+0000</output>
 			<error>Mix of separators *, *amp; and ( not parsed correctly
 			</error>
 		</TestCase>
-
+	
 		<TestCase>
 			<input>14:12:2015</input>
 			<output>Mon Dec 14 2015 00:00:00 GMT+0000</output>
@@ -387,7 +369,7 @@
 				hh:14, mm:12, ss:20. The space
 				between min and seconds should be ignored.
 				No separators between
-				second and date values date should be Jan 05,
+				second and day values. date should be Jan 05,
 				2001.
 			</error>
 		</TestCase>

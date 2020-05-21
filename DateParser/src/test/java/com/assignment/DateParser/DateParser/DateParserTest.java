@@ -57,7 +57,7 @@ public class DateParserTest {
 
 
   @BeforeTest()
-  protected void checks() {
+  public void checks() {
 
     // Get the required browser name for testing from testData and initialize the driver value
     // accordingly before running each test method

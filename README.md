@@ -28,12 +28,12 @@ The default version value is set to 72.0.3626.69
 The test code is capable of reading the input and output values from the xml file using the name attribute associated with each test.
 
 
-
 The testng.xml file is used to specify the test class names used at runtime.
 
 Running the tests at the local machine:
 
 Local environment needs maven to run the code
+
 
 All requied libraries will be downloaded by maven
 
