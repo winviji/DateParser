@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 /*
  * DateTimeUtility class Contains utility methods that help in browser interaction
  */
-public class DateTimeUtility {
+public class DateTimeUtility1 {
 
   String defaultYear = "2001";
   String defaultHour = "00";
